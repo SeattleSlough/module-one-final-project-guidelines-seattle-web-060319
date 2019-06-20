@@ -1,17 +1,19 @@
 
-require 'rest-client'
-require_relative './answer'
-require_relative './scraper.rb'
-require_relative './quiz.rb'
-require'pry'
+class API
+    require 'rest-client'
+    require_relative './answer'
+    require_relative './scraper.rb'
+    require_relative './quiz.rb'
+    require'pry'
 
 
-example = Scraper.new
 
-rwp = example.get_words
-word = correct_answer(rwp)
- 
- x = RestClient.get('https://od-api.oxforddictionaries.com/api/v2/entries/en-gb/#{word}?strictMatch=false, headers={app_id ="#{application_id}" app_key = "#{application_key}" }')
- y = JSON.parse(x)
-binding.pry
- return y
+
+    def self.definition(word)
+    x = RestClient.get("https://www.dictionaryapi.com/api/v3/references/collegiate/json/#{word}?key=9f01a881-4830-49a9-8849-c27cba983820")
+    y = JSON.parse(x)
+    return y[0]["shortdef"][0]
+    end
+    definition("practical")
+
+end

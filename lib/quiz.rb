@@ -1,15 +1,6 @@
 
 require_relative '../config/environment'
 
-# require_relative './api_communicator.rb'
-
-
-# example = Scraper.new
-
-# rwp = example.get_words
-
-
- #same answer
      def filter(rwp)#returns clean word for API
           filtered_word = []
           word = rwp.sample
@@ -35,30 +26,10 @@ require_relative '../config/environment'
      end
 
 
-
   def fake_answer(rwp)
     words = filter(rwp)
     words
   end
-
-# #   correctAns = word
-
-
-
-#   answerArr = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
-
-
-  optionA = answerArr.sample
-  answerArr.delete(optionA)
-  optionB = answerArr.sample
-  answerArr.delete(optionB)
-  optionC = answerArr.sample
-  answerArr.delete(optionC)
-  optionD = answerArr.sample
-  answerArr1 = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
-
-#   options = {'a' => optionA, 'b' => optionB, 'c' => optionC, 'd' => optionD}
-
 
 class Question
    attr_accessor :prompt, :answer
@@ -71,8 +42,6 @@ end
 
 
     def filter(rwp)#returns clean word for API
-
-
         filtered_word = []
         word = rwp.sample
         if word.include?(",") || word.include?("(")
@@ -88,11 +57,7 @@ end
       words
     end
 
-     binding.pry
-
   def run_quiz(questions, answers, options)
-
-
     correctAnswer = answers[0]
     answer = ""
     score = 0

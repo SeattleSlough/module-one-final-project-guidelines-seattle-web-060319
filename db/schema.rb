@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20190620003838) do
+ActiveRecord::Schema.define(version: 2019_06_20_173936) do
 
   create_table "answers", force: :cascade do |t|
     t.string "word"
   end
 
-  create_table "scores", force: :cascade do |t|
-    t.integer "score"
-    t.integer "user_id"
+  create_table "quizzes", force: :cascade do |t|
+    t.string "name"
+  end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "quiz_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
   end
-
 
 end
