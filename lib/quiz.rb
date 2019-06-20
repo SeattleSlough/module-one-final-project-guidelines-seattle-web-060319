@@ -15,26 +15,25 @@ require_relative '../config/environment'
         end
     end
 
-    def fake_answer(rwp)
-      words = filter(rwp)
-      words
-    end
 
-     binding.pry
 
-  def run_quiz(questions,options)
+  def run_quiz(questions)
+    # correctAnswer = options["correctAnswer"][0]
 
-    correctAnswer = options["correctAnswer"][0]
     answer = ""
     score = 0
 
     for question in questions
+      i = 0
+      binding.pry
         puts question.prompt
-        answer = gets.chomp()
-      if correctAnswer == options[answer]
+        user = gets.chomp()
+      if questions[i].answer["correctAnswer"][0] == questions[i].answer[user]
+        i += 1
         score += 1
-      elsif correctAnswer != options[answer]
+      elsif questions[i].answer["correctAnswer"][0] != questions[i].answer[user]
          score -= 1
+         i += 1
           end
        end
 

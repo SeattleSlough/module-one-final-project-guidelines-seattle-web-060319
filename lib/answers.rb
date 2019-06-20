@@ -18,6 +18,16 @@ class Answer
     correctAnswer = createAns(rwp)
     correctAnswer
   end
+  # def correct_answer(arr) michael-method
+  #         answer = filter(arr)
+  #         Answer.create(word: filter(arr))
+  #         if answer == Answer.find_by(word: answer)
+  #              correct_answer(arr)
+  #         else
+  #              Answer.create(word: answer)
+  #         end
+  #         return answer
+  #    end
 
   def wrong_Answer(rwp)
     wrongAnswer = createAns(rwp)
