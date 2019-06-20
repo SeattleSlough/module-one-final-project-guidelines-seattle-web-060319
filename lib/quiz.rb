@@ -1,32 +1,45 @@
+
 require_relative '../config/environment'
 
 
+     def filter(rwp)#returns clean word for API
+          filtered_word = []
+          word = rwp.sample
 
-class Question
-   attr_accessor :prompt, :answer
+          if word.include?(",") || word.include?("(")
+              filter(rwp)
+          else
+              filtered_word.push(word)
+              return filtered_word[0]
+          end
 
-   @@all = []
-   def initialize(prompt)
-        @prompt = prompt
-        @answer = answer
-        @@all << self
-   end
+     end
 
-   example = Scraper.new
-   rwp = example.get_words
-
-   def self.all
-     @@all
-   end
-
+     def correct_answer(arr)
+          answer = filter(arr)
+          Answer.create(word: filter(arr))
+          if answer == Answer.find_by(word: answer)
+               correct_answer(arr)
+          else
+               Answer.create(word: answer)
+          end
+          return answer
+     end
 
 
-end
+
+  def fake_answer(rwp)
+    words = filter(rwp)
+    words
+  end
+
+
 
 
 
 
     def filter(rwp)#returns clean word for API
+
 
         filtered_word = []
         word = rwp.sample
@@ -43,6 +56,7 @@ end
       words
     end
 
+     binding.pry
 
   def run_quiz(questions,options)
 
