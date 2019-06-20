@@ -22,13 +22,3 @@ class Scraper
 
 
 end
-
-example2 = Scraper.new
-
-
-
-# arr = example.item_container
-# arr2 = arr.shift
-# arr3 = arr2.shift
-
-# def split_words(arr)
