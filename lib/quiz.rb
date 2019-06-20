@@ -4,11 +4,25 @@ require_relative '../config/environment'
 
 class Question
    attr_accessor :prompt, :answer
+
+   @@all = []
    def initialize(prompt)
         @prompt = prompt
         @answer = answer
+        @@all << self
    end
+
+   example = Scraper.new
+   rwp = example.get_words
+
+   def self.all
+     @@all
+   end
+
+
+
 end
+
 
 
 
@@ -30,9 +44,9 @@ end
     end
 
 
-  def run_quiz(questions, answers, options)
+  def run_quiz(questions,options)
 
-    correctAnswer = answers[0]
+    correctAnswer = options["correctAnswer"][0]
     answer = ""
     score = 0
 
