@@ -1,26 +1,19 @@
 
 require_relative '../config/environment'
 
+     def filter(rwp)#returns clean word for API
+          filtered_word = []
+          word = rwp.sample
 
-    def filter(rwp)#returns clean word for API
+          if word.include?(",") || word.include?("(")
+              filter(rwp)
+          else
+              filtered_word.push(word)
+              return filtered_word[0]
+          end
 
+     end
 
-        filtered_word = []
-        word = rwp.sample
-        if word.include?(",") || word.include?("(")
-            filter(rwp)
-        else
-            filtered_word.push(word)
-            return filtered_word[0]
-        end
-    end
-
-    def fake_answer(rwp)
-      words = filter(rwp)
-      words
-    end
-
-     binding.pry
 
   def run_quiz(questions,options)
 
@@ -41,3 +34,5 @@ require_relative '../config/environment'
        puts "you got #{score} out of #{questions.length()}"
        return score
      end
+
+
