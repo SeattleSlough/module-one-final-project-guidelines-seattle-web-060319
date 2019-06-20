@@ -1,32 +1,9 @@
+
 require_relative '../config/environment'
 
 
-
-class Question
-   attr_accessor :prompt, :answer
-
-   @@all = []
-   def initialize(prompt)
-        @prompt = prompt
-        @answer = answer
-        @@all << self
-   end
-
-   example = Scraper.new
-   rwp = example.get_words
-
-   def self.all
-     @@all
-   end
-
-
-
-end
-
-
-
-
     def filter(rwp)#returns clean word for API
+
 
         filtered_word = []
         word = rwp.sample
@@ -43,6 +20,7 @@ end
       words
     end
 
+     binding.pry
 
   def run_quiz(questions,options)
 
