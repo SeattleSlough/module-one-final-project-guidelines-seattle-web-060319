@@ -1,3 +1,4 @@
+
 require 'rest-client'
 require_relative './answer'
 require_relative './scraper.rb'
@@ -14,4 +15,3 @@ word = correct_answer(rwp)
  y = JSON.parse(x)
 binding.pry
  return y
-
