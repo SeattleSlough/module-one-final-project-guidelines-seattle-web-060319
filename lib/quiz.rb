@@ -1,20 +1,19 @@
 require_relative '../config/environment'
 
-class Quiz
-
-  attr_accessor :rwp
-
-  def initialize(rwp)
-    @rwp = rwp
-  end
 
 
-example = Scraper.new
+class Question
+   attr_accessor :prompt, :answer
+   def initialize(prompt)
+        @prompt = prompt
+        @answer = answer
+   end
+end
 
-rwp = example.get_words
 
 
     def filter(rwp)#returns clean word for API
+
         filtered_word = []
         word = rwp.sample
         if word.include?(",") || word.include?("(")
@@ -25,47 +24,11 @@ rwp = example.get_words
         end
     end
 
-    def fake_answer(thing)
-      words = filter(thing)
+    def fake_answer(rwp)
+      words = filter(rwp)
       words
     end
 
-
-
-  wrongAns1 = fake_answer(rwp)
-  wrongAns2 = fake_answer(rwp)
-  wrongAns3 = fake_answer(rwp)
-  wrongAns4 = fake_answer(rwp)
-  correctAns = filter(rwp)
-
-
-
-
-
-
-  answerArr = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
-
-  optionA = answerArr.sample
-  answerArr.delete(optionA)
-  optionB = answerArr.sample
-  answerArr.delete(optionB)
-  optionC = answerArr.sample
-  answerArr.delete(optionC)
-  optionD = answerArr.sample
-  answerArr.delete(optionD)
-  answerArr1 = [correctAns, fake_answer(rwp), fake_answer(rwp), fake_answer(rwp)]
-
-  options = {'a' => optionA, 'b' => optionB, 'c' => optionC, 'd' => optionD}
-
-
-  def question(optionA,optionB,optionC,optionD)
-
-    p1 = "Which of the following words means: -puts definition here- ?\n(a) #{optionA}\n(b)#{optionB}\n(c)#{optionC}\n(d)#{optionD}"
-    #p2 = "Which of the following words means: -puts definition here- ?\n(a) #{correctAns}\n(b)#{fake_answer(example)}\n(c)#{fake_answer(example)}\n(d)#{fake_answer(example)}"
-
-    questions = [p1]
-
-   end
 
   def run_quiz(questions, answers, options)
 
@@ -86,6 +49,3 @@ rwp = example.get_words
        puts "you got #{score} out of #{questions.length()}"
        return score
      end
-end
-quiz1 = Quiz.new
-binding.pry
