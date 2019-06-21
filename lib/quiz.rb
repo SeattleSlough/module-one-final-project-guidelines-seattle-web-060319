@@ -44,11 +44,13 @@ require_relative '../config/environment'
         score += 1
         correct += 1
         puts "CORRECT!"
+        sytem('clear')
 
       elsif facts != questions[i].answer[user]
          score -= 1
          i += 1
-         puts "WAH WAH"
+         puts "WAH WAH, the correct answer is #{facts}"
+         system('clear')
           end
         end
 

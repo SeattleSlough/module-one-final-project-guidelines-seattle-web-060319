@@ -55,19 +55,35 @@ questions[9].answer = options10
 
 
 def cli_intro(questions)
-  puts "HELLO WORLD"
-  sleep(3)
+  system('clear')
+  puts "                                  ,----,
+                                ,/   .`|                                                       ,----,
+  .--.--.      ,---,          ,`   .'  :            ,----..                      ,---,       .'   .`|
+ /  /    '.   '  .'\\       ;    ;     /           /   /   \             ,--, ,`--.' |    .'   .'   ;
+|  :  /`. /  /  ;    '.   .'___,/    ,'           /   .     :          ,'_ /| |   :  :  ,---, '    .'
+;  |  |--`  :  :      \\  |    :     |           .   /   ;.  \    .--. |  | : :   |  '  |   :     ./
+|  :  ;_    :  |   /\  \\ ;    |.';  ;          .   ;   /  ` ;  ,'_ /| :  . | |   :  |  ;   | .'  /
+ \\  \\    `. |  :  ' ;.   :`----'  |  |          ;   |  ; \\ ; |  |  ' | |  . . '   '  ;  `---' /  ;
+  `----.   \\|  |  ;/  \\  \\   '   :  ;          |   :  | ; | '  |  | ' |  | | |   |  |    /  ;  /
+  __ \\  \\  |'  :  | \\  \\ ,'   |   |  '          .   |  ' ' ' :  :  | | :  ' ; '   :  ;   ;  /  /--,
+ /  /`--'  /|  |  '  '--'     '   :  |          '   ;  \\; /  |  |  ; ' |  | ' |   |  '  /  /  / .`|
+'--'.     / |  :  :           ;   |.'            \\   \\  ',  . \\ :  | : ;  ; | '   :  |./__;       :
+  `--'---'  |  | ,'           '---'               ;   :      ; |'  :  `--'   \\;   |.' |   :     .'
+            `--''                                  \\   \\ .'`-- :  ,      .-./'---'   ;   |  .'
+                                                    `---`        `--`----'            `---'
+                                                    "
+  sleep(1)
   puts "Welcome to Rohit and Michael's SAT vocabulary prep"
   puts "Studies have shown you will get a minimum of 0% smarter by playing this game!"
   puts "Guaranteed OR YOUR MONEY BACK"
-  sleep(3)
+  sleep(1)
   puts "What would you like to do? (a)Start Quiz                  (b)View Highscores"
   puts "                           (c)End Game "
   userinput = gets.chomp
     if userinput.downcase == ("a")
       start(questions)
     elsif userinput.downcase == ("b")
-      highscores()
+      highscores(questions)
     elsif userinput.downcase == ("c")
       puts "Thank You for playing hope you got a little bit smartupider"
     end
@@ -80,18 +96,19 @@ def start(questions)
   newUser = User.create(:name => userinput)
   puts "start quiz?(Y/N) "
   userinput = gets.chomp
-  if userinput.casecmp("y")
+  if userinput.downcase == "y"
     binding.pry
     quizCreate = Quiz.create(score:run_quiz(questions),user_id: newUser.id )
     scoreStore = Score.create(username: newUser.name, quiz_id: quizCreate.id, quiz_score: quizCreate.score)
     cli_intro(questions)
-  elsif userinput.casecmp("n")
+  elsif userinput.downcase == "n"
     cli_intro(questions)
   end
 end
 
 
-def highscores
+def highscores(questions)
+  system('clear')
   highscorers = Score.order(:username, quiz_score: :desc)
   i = 0
   j = 1
@@ -100,6 +117,13 @@ def highscores
     puts "#{j}: #{highscorers[i].username}, #{highscorers[i].quiz_score}"
     i += 1
     j += 1
+  end
+  puts "return to main menu?(Y/N) "
+  userinput = gets.chomp
+  if userinput.downcase == "y"
+    cli_intro(questions)
+  else
+    highscores(questions)
   end
 end
 
