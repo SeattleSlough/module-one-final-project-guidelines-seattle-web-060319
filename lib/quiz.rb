@@ -3,6 +3,8 @@
 require_relative '../config/environment'
 
 
+
+
     def filter(rwp)#returns clean word for API
 
 
@@ -28,7 +30,6 @@ require_relative '../config/environment'
       i = 0
 
     for question in questions
-        binding.pry
 
 
         puts question.prompt
@@ -47,4 +48,10 @@ require_relative '../config/environment'
 
        puts "you got #{score} out of #{questions.length()}"
        return score
+     end
+
+
+
+     class Quiz < ActiveRecord::Base
+
      end

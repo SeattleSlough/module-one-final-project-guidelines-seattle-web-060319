@@ -17,12 +17,14 @@ ActiveRecord::Schema.define(version: 2019_06_20_173936) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "name"
+    t.integer "score"
+    t.integer "user_id"
   end
 
   create_table "scores", force: :cascade do |t|
     t.integer "user_id"
     t.integer "quiz_id"
+    t.integer "quiz_score"
   end
 
   create_table "users", force: :cascade do |t|

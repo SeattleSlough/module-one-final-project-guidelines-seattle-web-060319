@@ -3,6 +3,7 @@ class CreateTableScores < ActiveRecord::Migration[5.0]
     create_table :scores do |t|
       t.integer :user_id
       t.integer :quiz_id
+      t.integer :quiz_score
     end
   end
 end

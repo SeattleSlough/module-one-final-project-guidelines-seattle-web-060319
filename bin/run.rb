@@ -1,7 +1,5 @@
 require_relative '../config/environment'
 
-puts "HELLO WORLD"
-
 example = Scraper.new
 rwp = example.get_words
 
@@ -54,6 +52,28 @@ questions[6].answer = options7
 questions[7].answer = options8
 questions[8].answer = options9
 questions[9].answer = options10
+
+
+def cli_intro
+puts "HELLO WORLD"
+puts "Welcome to Rohit and Michael's SAT vocabulary prep"
+puts "Studies have shown you will get a minimum of 0% smarter by playing this game!"
+puts"Guaranteed OR YOUR MONEY BACK"
+end
+
+def start(questions)
+  puts "Lets begin with the simple questions... whats your name?: "
+  userinput = gets.chomp
+  users = User.create(username: userinput)
+  puts "start quiz?(Y/N) "
+  userinput = gets.chomp
+  if userinput.casecmp("y")
+    quizCreate = Quiz.create(score:run_quiz(questions),user_id: users.id )
+    scoreStore = Score.create(user_id: users.id, quiz_id: quizCreate.id, quiz_score: quizCreate.score)
+  else
+    puts "OK have a good day!"
+  end
+end
 
 binding.pry
 0

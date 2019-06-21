@@ -17,7 +17,7 @@ class AnswerCreator
     correctAnswer = createAns(rwp)
     correctAnswer
   end
-  # def correct_answer(arr) michael-method
+  # def correct_Answer(arr) #michael-method
   #         answer = filter(arr)
   #         Answer.create(word: filter(arr))
   #         if answer == Answer.find_by(word: answer)
