@@ -4,6 +4,7 @@ class CreateTableScores < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.integer :quiz_id
       t.integer :quiz_score
+      t.string :username
     end
   end
 end

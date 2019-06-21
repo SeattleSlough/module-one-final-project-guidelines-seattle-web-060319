@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 2019_06_20_173936) do
     t.integer "user_id"
     t.integer "quiz_id"
     t.integer "quiz_score"
+    t.string "username"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "name"
   end
 
 end

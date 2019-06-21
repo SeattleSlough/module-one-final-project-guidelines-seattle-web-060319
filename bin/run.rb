@@ -54,26 +54,55 @@ questions[8].answer = options9
 questions[9].answer = options10
 
 
-def cli_intro
-puts "HELLO WORLD"
-puts "Welcome to Rohit and Michael's SAT vocabulary prep"
-puts "Studies have shown you will get a minimum of 0% smarter by playing this game!"
-puts"Guaranteed OR YOUR MONEY BACK"
+def cli_intro(questions)
+  puts "HELLO WORLD"
+  sleep(3)
+  puts "Welcome to Rohit and Michael's SAT vocabulary prep"
+  puts "Studies have shown you will get a minimum of 0% smarter by playing this game!"
+  puts "Guaranteed OR YOUR MONEY BACK"
+  sleep(3)
+  puts "What would you like to do? (a)Start Quiz                  (b)View Highscores"
+  puts "                           (c)End Game "
+  userinput = gets.chomp
+    if userinput.downcase == ("a")
+      start(questions)
+    elsif userinput.downcase == ("b")
+      highscores()
+    elsif userinput.downcase == ("c")
+      puts "Thank You for playing hope you got a little bit smartupider"
+    end
+
 end
 
 def start(questions)
   puts "Lets begin with the simple questions... whats your name?: "
   userinput = gets.chomp
-  users = User.create(username: userinput)
+  newUser = User.create(:name => userinput)
   puts "start quiz?(Y/N) "
   userinput = gets.chomp
   if userinput.casecmp("y")
-    quizCreate = Quiz.create(score:run_quiz(questions),user_id: users.id )
-    scoreStore = Score.create(user_id: users.id, quiz_id: quizCreate.id, quiz_score: quizCreate.score)
-  else
-    puts "OK have a good day!"
+    binding.pry
+    quizCreate = Quiz.create(score:run_quiz(questions),user_id: newUser.id )
+    scoreStore = Score.create(username: newUser.name, quiz_id: quizCreate.id, quiz_score: quizCreate.score)
+    cli_intro(questions)
+  elsif userinput.casecmp("n")
+    cli_intro(questions)
   end
 end
 
+
+def highscores
+  highscorers = Score.order(:username, quiz_score: :desc)
+  i = 0
+  j = 1
+    puts "Name ---- Score"
+  for  highscorer in highscorers
+    puts "#{j}: #{highscorers[i].username}, #{highscorers[i].quiz_score}"
+    i += 1
+    j += 1
+  end
+end
+
+#cli_intro(questions)
 binding.pry
 0
