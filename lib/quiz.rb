@@ -23,21 +23,25 @@ require_relative '../config/environment'
     answer = ""
     score = 0
 
-    for question in questions
       i = 0
-      binding.pry
+
+    for question in questions
+        binding.pry
+
+
         puts question.prompt
         user = gets.chomp()
       if questions[i].answer["correctAnswer"][0] == questions[i].answer[user]
         i += 1
         score += 1
+
       elsif questions[i].answer["correctAnswer"][0] != questions[i].answer[user]
          score -= 1
          i += 1
           end
         end
 
-        
+
 
        puts "you got #{score} out of #{questions.length()}"
        return score
