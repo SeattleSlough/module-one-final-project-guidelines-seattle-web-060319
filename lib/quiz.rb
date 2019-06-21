@@ -35,7 +35,9 @@ require_relative '../config/environment'
          score -= 1
          i += 1
           end
-       end
+        end
+
+        
 
        puts "you got #{score} out of #{questions.length()}"
        return score
