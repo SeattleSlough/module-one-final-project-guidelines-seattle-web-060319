@@ -103,6 +103,4 @@ def highscores
   end
 end
 
-#cli_intro(questions)
-binding.pry
-0
+cli_intro(questions)
