@@ -1,34 +1,49 @@
+
+
 require_relative '../config/environment'
 
-     def filter(rwp)#returns clean word for API
-          filtered_word = []
-          word = rwp.sample
 
-          if word.include?(",") || word.include?("(")
-              filter(rwp)
-          else
-              filtered_word.push(word)
-              return filtered_word[0]
-          end
-
-     end
+    def filter(rwp)#returns clean word for API
 
 
-  def run_quiz(questions,options)
+        filtered_word = []
+        word = rwp.sample
+        if word.include?(",") || word.include?("(")
+            filter(rwp)
+        else
+            filtered_word.push(word)
+            return filtered_word[0]
+        end
+    end
 
-    correctAnswer = options["correctAnswer"][0]
+
+
+  def run_quiz(questions)
+    # correctAnswer = options["correctAnswer"][0]
+
+
     answer = ""
     score = 0
 
+      i = 0
+
     for question in questions
+        binding.pry
+
+
         puts question.prompt
-        answer = gets.chomp()
-      if correctAnswer == options[answer]
+        user = gets.chomp()
+      if questions[i].answer["correctAnswer"][0] == questions[i].answer[user]
+        i += 1
         score += 1
-      elsif correctAnswer != options[answer]
+
+      elsif questions[i].answer["correctAnswer"][0] != questions[i].answer[user]
          score -= 1
+         i += 1
           end
-       end
+        end
+
+
 
        puts "you got #{score} out of #{questions.length()}"
        return score

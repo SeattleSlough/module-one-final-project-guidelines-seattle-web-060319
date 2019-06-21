@@ -18,9 +18,9 @@ answerkey2 = Answer.new
 
 
 
-options1 = answerkey1.answerOptions(rwp)
+ options1 = answerkey1.answerOptions(rwp)
  options2 = answerkey2.answerOptions(rwp)
-options3 = answerkey3.answerOptions(rwp)
+ options3 = answerkey3.answerOptions(rwp)
  options4 = answerkey4.answerOptions(rwp)
  options5 = answerkey5.answerOptions(rwp)
  options6 = answerkey6.answerOptions(rwp)
@@ -43,3 +43,18 @@ question8 = Question.new("What word mean this -enter defintion here-\n (a)#{opti
 question9 = Question.new("What word mean this -enter defintion here-\n (a)#{options9["a"]}\n(b)#{options9["b"]}\n(c)#{options9["c"]}\n(d)#{options9["d"]}\n"),
 question10 = Question.new("What word mean this -enter defintion here-\n (a)#{options10["a"]}\n(b)#{options10["b"]}\n(c)#{options10["c"]}\n(d)#{options10["d"]}\n")
 ]
+
+questions[0].answer = options1
+questions[1].answer = options2
+questions[2].answer = options3
+questions[3].answer = options4
+questions[4].answer = options5
+questions[5].answer = options6
+questions[6].answer = options7
+questions[7].answer = options8
+questions[8].answer = options9
+questions[9].answer = options10
+
+binding.pry
+0
+
