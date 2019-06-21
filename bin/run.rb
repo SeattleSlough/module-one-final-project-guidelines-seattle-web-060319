@@ -43,6 +43,7 @@ question8 = Question.new("What word mean this -enter defintion here-\n (a)#{opti
 question9 = Question.new("What word mean this -enter defintion here-\n (a)#{options9["a"]}\n(b)#{options9["b"]}\n(c)#{options9["c"]}\n(d)#{options9["d"]}\n"),
 question10 = Question.new("What word mean this -enter defintion here-\n (a)#{options10["a"]}\n(b)#{options10["b"]}\n(c)#{options10["c"]}\n(d)#{options10["d"]}\n")
 ]
+
 questions[0].answer = options1
 questions[1].answer = options2
 questions[2].answer = options3
@@ -56,3 +57,4 @@ questions[9].answer = options10
 
 binding.pry
 0
+

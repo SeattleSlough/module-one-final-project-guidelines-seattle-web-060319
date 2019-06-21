@@ -1,4 +1,5 @@
 
+
 require_relative '../config/environment'
 
 
@@ -19,6 +20,7 @@ require_relative '../config/environment'
 
   def run_quiz(questions)
     # correctAnswer = options["correctAnswer"][0]
+
 
     answer = ""
     score = 0
