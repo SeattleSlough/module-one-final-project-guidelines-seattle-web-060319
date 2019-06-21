@@ -1,7 +1,7 @@
 require 'Nokogiri'
 require "HTTParty"
 require "pry"
-
+require_relative '../config/environment'
 
 
 class Scraper

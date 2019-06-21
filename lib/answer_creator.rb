@@ -1,8 +1,7 @@
 require_relative '../config/environment'
+require_relative 'scraper'
 
-
-
-class Answer
+class AnswerCreator
   example = Scraper.new
   rwp = example.get_words
 

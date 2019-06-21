@@ -1,10 +1,12 @@
+require 'rest-client'
+require_relative './answer'
+require_relative './scraper.rb'
+require_relative './quiz.rb'
+require'pry'
+require_relative '../config/environment'
+
 
 class API
-    require 'rest-client'
-    require_relative './answer'
-    require_relative './scraper.rb'
-    require_relative './quiz.rb'
-    require'pry'
 
 
 
